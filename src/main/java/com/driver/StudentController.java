@@ -59,7 +59,7 @@ public class StudentController {
         if (teacher == null) {
             throw new ResourceNotFoundException("Teacher not found with name: " + name);
         }
-        return new ResponseEntity<>(teacher, HttpStatus.OK);
+        return new ResponseEntity<>(teacher, HttpStatus.CREATED);
     }
 
     @GetMapping("/get-students-by-teacher-name/{teacher}")
@@ -68,7 +68,7 @@ public class StudentController {
         if (students.isEmpty()) {
             throw new ResourceNotFoundException("No students found for teacher: " + teacher);
         }
-        return new ResponseEntity<>(students, HttpStatus.OK);
+        return new ResponseEntity<>(students, HttpStatus.CREATED);
     }
 
     @GetMapping("/get-all-students")

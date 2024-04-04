@@ -13,32 +13,32 @@ public class StudentRepository {
 
 
     public StudentRepository(){
-        this.studentMap = new HashMap<String, Student>();
-        this.teacherMap = new HashMap<String, Teacher>();
-        this.teacherStudentMapping = new HashMap<String, List<String>>();
+        studentMap = new HashMap<String, Student>();
+        teacherMap = new HashMap<String, Teacher>();
+        teacherStudentMapping = new HashMap<String, List<String>>();
     }
 
 
     public void saveStudent(Student student){
         // your code goes here
-        this.studentMap.put(student.getName(),student);
+        studentMap.put(student.getName(),student);
     }
 
     public void saveTeacher(Teacher teacher){
         // your code goes here
-        this.teacherMap.put(teacher.getName(), teacher);
+       teacherMap.put(teacher.getName(), teacher);
     }
 
     public void saveStudentTeacherPair(String student, String teacher){
         if(studentMap.containsKey(student) && teacherMap.containsKey(teacher)){
             if(teacherStudentMapping.containsKey(teacher))
             {
-                this.teacherStudentMapping.get(teacher).add(student);
+                teacherStudentMapping.get(teacher).add(student);
             }
             else {
                 List<String> new_Student = new ArrayList<>();
                 new_Student.add(student);
-                this.teacherStudentMapping.put(teacher,new_Student);
+               teacherStudentMapping.put(teacher,new_Student);
             }
         }
     }
@@ -46,7 +46,7 @@ public class StudentRepository {
     public Student findStudent(String student){
         if(studentMap.containsKey(student))
         {
-            return this.studentMap.get(student);
+            return studentMap.get(student);
         }
         else {
             return null;
@@ -58,7 +58,7 @@ public class StudentRepository {
 
         if(teacherMap.containsKey(teacher))
         {
-            return this.teacherMap.get(teacher);
+            return teacherMap.get(teacher);
         }
         else {
             return null;
@@ -68,7 +68,7 @@ public class StudentRepository {
     public List<String> findStudentsFromTeacher(String teacher){
         if(teacherStudentMapping.containsKey(teacher))
         {
-            return this.teacherStudentMapping.get(teacher);
+            return teacherStudentMapping.get(teacher);
         }
         else {
             return new ArrayList<>();
@@ -90,13 +90,13 @@ public class StudentRepository {
 
         if(teacherMap.containsKey(teacher))
         {
-            this.teacherMap.remove(teacher);
+            teacherMap.remove(teacher);
         }
     }
 
     public void deleteAllTeachers(){
         // your code goes here
-        this.teacherMap.clear();
+        teacherMap.clear();
     }
 
 //    public void printStudentMap() {
