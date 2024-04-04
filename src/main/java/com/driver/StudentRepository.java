@@ -9,13 +9,13 @@ public class StudentRepository {
 
     private HashMap<String, Student> studentMap;
     private HashMap<String, Teacher> teacherMap;
-    private HashMap<String, List<Student>> teacherStudentMapping;
+    private HashMap<String, List<String>> teacherStudentMapping;
 
 
     public StudentRepository(){
         studentMap = new HashMap<String, Student>();
         teacherMap = new HashMap<String, Teacher>();
-        teacherStudentMapping = new HashMap<String, List<Student>>();
+        teacherStudentMapping = new HashMap<String, List<String>>();
     }
 
 
@@ -36,10 +36,10 @@ public class StudentRepository {
             teacher1.setNumberOfStudents(teacher1.getNumberOfStudents()+1);
 
             Student student1=findStudent(student);
-            if(!teacherStudentMapping.containsKey(teacher1)){
+            if(!teacherStudentMapping.containsKey(teacher)){
                 teacherStudentMapping.put(teacher,new ArrayList<>());
             }
-            teacherStudentMapping.get(teacher1).add(student1);
+            teacherStudentMapping.get(teacher).add(student1.getName());
 
         }
     }
@@ -60,9 +60,9 @@ public class StudentRepository {
         List<String> students=new ArrayList<>();
         Teacher teacher1=findTeacher(teacher);
 
-        List<Student> list =teacherStudentMapping.getOrDefault(teacher1,new ArrayList<>());
-        for(Student student:list){
-            students.add(student.getName());
+        List<String> list =teacherStudentMapping.getOrDefault(teacher,new ArrayList<>());
+        for(String student:list){
+            students.add(student);
         }
         return students;
     }
@@ -76,12 +76,12 @@ public class StudentRepository {
     public void deleteTeacher(String teacher){
 
         Teacher teacher1=findTeacher(teacher);
-        List<Student> students=teacherStudentMapping.getOrDefault(teacher1,new ArrayList<>());
-        for(Student student:students){
-            studentMap.remove(student.getName());
+        List<String> students=teacherStudentMapping.getOrDefault(teacher,new ArrayList<>());
+        for(String student:students){
+            studentMap.remove(student);
         }
         teacherMap.remove(teacher);
-        teacherStudentMapping.remove(teacher1);
+        teacherStudentMapping.remove(teacher);
     }
 
     public void deleteAllTeachers(){
