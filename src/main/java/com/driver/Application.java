@@ -15,9 +15,5 @@ public class Application {
 		SpringApplication.run(Application.class, args);
 
 
-
-		// Call the printStudentMap() method to print the student HashMap data
-
-
 	}
 }
