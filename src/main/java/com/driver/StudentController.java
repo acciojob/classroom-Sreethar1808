@@ -50,7 +50,7 @@ public class StudentController {
         if (student == null) {
             throw new ResourceNotFoundException("Student not found with name: " + name);
         }
-        return new ResponseEntity<>(student, HttpStatus.OK);
+        return new ResponseEntity<>(student, HttpStatus.CREATED);
     }
 
     @GetMapping("/get-teacher-by-name/{name}")
