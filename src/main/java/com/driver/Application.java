@@ -14,7 +14,7 @@ public class Application {
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 
-		StudentRepository studentRepository = new StudentRepository();
+
 
 		// Call the printStudentMap() method to print the student HashMap data
 
