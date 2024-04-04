@@ -46,9 +46,11 @@ public class StudentController {
 
     @GetMapping("/get-student-by-name/{name}")
     public ResponseEntity<Student> getStudentByName(@PathVariable String name){
-        Student student  = studentService.findStudent(name); // Assign student by calling service layer method
-
-        return new ResponseEntity<>(student, HttpStatus.CREATED);
+        Student student = studentService.findStudent(name);
+        if (student == null) {
+            throw new ResourceNotFoundException("Student not found with name: " + name);
+        }
+        return new ResponseEntity<>(student, HttpStatus.OK);
     }
 
     @GetMapping("/get-teacher-by-name/{name}")
