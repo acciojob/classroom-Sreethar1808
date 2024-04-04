@@ -26,27 +26,27 @@ public class StudentController {
     @PostMapping("/add-student")
     public ResponseEntity<String> addStudent(@RequestBody Student student){
 
-        studentService.addStudent(student);
+        this.studentService.addStudent(student);
         return new ResponseEntity<>("New student added successfully", HttpStatus.CREATED);
     }
 
     @PostMapping("/add-teacher")
     public ResponseEntity<String> addTeacher(@RequestBody Teacher teacher){
 
-        studentService.addTeacher(teacher);
+        this.studentService.addTeacher(teacher);
         return new ResponseEntity<>("New teacher added successfully", HttpStatus.CREATED);
     }
 
     @PutMapping("/add-student-teacher-pair")
     public ResponseEntity<String> addStudentTeacherPair(@RequestParam String student, @RequestParam String teacher){
 
-        studentService.createStudentTeacherPair(student,teacher);
+        this.studentService.createStudentTeacherPair(student,teacher);
         return new ResponseEntity<>("New student-teacher pair added successfully", HttpStatus.CREATED);
     }
 
     @GetMapping("/get-student-by-name/{name}")
     public ResponseEntity<Student> getStudentByName(@PathVariable String name){
-        Student student = studentService.findStudent(name);
+        Student student = this.studentService.findStudent(name);
 //        if (student == null) {
 //            throw new ResourceNotFoundException("Student not found with name: " + name);
 //        }
@@ -55,7 +55,7 @@ public class StudentController {
 
     @GetMapping("/get-teacher-by-name/{name}")
     public ResponseEntity<Teacher> getTeacherByName(@PathVariable String name){
-        Teacher teacher=studentService.findTeacher(name);// Assign student by calling service layer method
+        Teacher teacher=this.studentService.findTeacher(name);// Assign student by calling service layer method
 //        if (teacher == null) {
 //            throw new ResourceNotFoundException("Teacher not found with name: " + name);
 //        }
@@ -64,7 +64,7 @@ public class StudentController {
 
     @GetMapping("/get-students-by-teacher-name/{teacher}")
     public ResponseEntity<List<String>> getStudentsByTeacherName(@PathVariable String teacher){
-        List<String> students = studentService.findStudentsFromTeacher(teacher); // Assign list of student by calling service layer method
+        List<String> students = this.studentService.findStudentsFromTeacher(teacher); // Assign list of student by calling service layer method
 //        if (students.isEmpty()) {
 //            throw new ResourceNotFoundException("No students found for teacher: " + teacher);
 //        }
@@ -73,7 +73,7 @@ public class StudentController {
 
     @GetMapping("/get-all-students")
     public ResponseEntity<List<String>> getAllStudents(){
-        List<String> students = studentService.findAllStudents(); // Assign list of student by calling service layer method
+        List<String> students = this.studentService.findAllStudents(); // Assign list of student by calling service layer method
 
         return new ResponseEntity<>(students, HttpStatus.CREATED);
     }
@@ -81,13 +81,13 @@ public class StudentController {
     @DeleteMapping("/delete-teacher-by-name")
     public ResponseEntity<String> deleteTeacherByName(@RequestParam String teacher){
 
-        studentService.deleteTeacher(teacher);
+        this.studentService.deleteTeacher(teacher);
         return new ResponseEntity<>(teacher + " removed successfully", HttpStatus.CREATED);
     }
     @DeleteMapping("/delete-all-teachers")
     public ResponseEntity<String> deleteAllTeachers(){
 
-        studentService.deleteAllTeachers();
+        this.studentService.deleteAllTeachers();
         return new ResponseEntity<>("All teachers deleted successfully", HttpStatus.CREATED);
     }
 
