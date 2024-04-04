@@ -34,12 +34,14 @@ public class StudentRepository {
             if(teacherStudentMapping.containsKey(teacher))
             {
                 teacherStudentMapping.get(teacher).add(student);
+
             }
             else {
                 List<String> new_Student = new ArrayList<>();
                 new_Student.add(student);
                teacherStudentMapping.put(teacher,new_Student);
             }
+            teacherMap.get(teacher).setNumberOfStudents(1);
         }
     }
 

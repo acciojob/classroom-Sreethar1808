@@ -31,7 +31,7 @@ public class Teacher {
     }
 
     public void setNumberOfStudents(int numberOfStudents) {
-        this.numberOfStudents = numberOfStudents;
+        this.numberOfStudents += numberOfStudents;
     }
 
     public int getAge() {
