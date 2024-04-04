@@ -44,46 +44,46 @@ public class StudentRepository {
     }
 
     public Student findStudent(String student){
-//        if(studentMap.containsKey(student))
-//        {
+        if(studentMap.containsKey(student))
+        {
             return studentMap.get(student);
-//        }
-//        else {
-//            return null;
-//        }
+        }
+        else {
+            return null;
+        }
     }
 
     public Teacher findTeacher(String teacher){
         // your code goes here
 
-//        if(teacherMap.containsKey(teacher))
-//        {
+        if(teacherMap.containsKey(teacher))
+        {
             return teacherMap.get(teacher);
-//        }
-//        else {
-//            return null;
-//        }
+        }
+        else {
+            return null;
+        }
     }
 
     public List<String> findStudentsFromTeacher(String teacher){
-//        if(teacherStudentMapping.containsKey(teacher))
-//        {
+        if(teacherStudentMapping.containsKey(teacher))
+        {
             return teacherStudentMapping.get(teacher);
-//        }
-//        else {
-//            return new ArrayList<>();
-//        }
+        }
+        else {
+            return new ArrayList<>();
+        }
     }
 
     public List<String> findAllStudents(){
         // your code goes here
-//        if(studentMap.size()>0) {
+        if(studentMap.size()>0) {
             List<String> studentList = new ArrayList<>(studentMap.keySet());
             return studentList;
-//        }
-//        else {
-//            return new ArrayList<>();
-//        }
+        }
+        else {
+            return new ArrayList<>();
+        }
     }
 
     public void deleteTeacher(String teacher){
@@ -91,12 +91,15 @@ public class StudentRepository {
         if(teacherMap.containsKey(teacher))
         {
             teacherMap.remove(teacher);
+
+            teacherStudentMapping.remove(teacher);
         }
     }
 
     public void deleteAllTeachers(){
         // your code goes here
         teacherMap.clear();
+        teacherStudentMapping=new HashMap<>();
     }
 
 //    public void printStudentMap() {
