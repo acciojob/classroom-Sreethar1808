@@ -11,11 +11,13 @@ public class StudentRepository {
     private HashMap<String, Teacher> teacherMap;
     private HashMap<String, List<String>> teacherStudentMapping;
 
+
     public StudentRepository(){
         this.studentMap = new HashMap<String, Student>();
         this.teacherMap = new HashMap<String, Teacher>();
         this.teacherStudentMapping = new HashMap<String, List<String>>();
     }
+
 
     public void saveStudent(Student student){
         // your code goes here
@@ -97,5 +99,11 @@ public class StudentRepository {
         teacherMap.clear();
     }
 
+//    public void printStudentMap() {
+//        System.out.println("Printing studentMap:");
+//        for (String key : studentMap.keySet()) {
+//            System.out.println("Key: " + key + ", Value: " + studentMap.get(key));
+//        }
+//    }
 
 }

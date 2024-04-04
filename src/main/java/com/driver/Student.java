@@ -39,4 +39,12 @@ public class Student {
     public void setAverageScore(double averageScore) {
         this.averageScore = averageScore;
     }
+
+    @Override
+    public String toString()
+    {
+    return "Student{" +
+            "name='" + name + '\'' +
+            '}';
+    }
 }

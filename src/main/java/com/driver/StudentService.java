@@ -46,4 +46,8 @@ public class StudentService {
     public void deleteAllTeachers(){
         studentRepository.deleteAllTeachers();
     }
+
+
+
+
 }
